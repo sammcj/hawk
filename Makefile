@@ -75,7 +75,7 @@ all: scripts/hawk.$(INIT_STYLE) scripts/hawk.service hawk/config/lighttpd.conf t
 		# Generate Gemfile.lock \
 		bundle list && \
 		# Strip unwanted gems from Gemfile.lock \
-		sed -i -e '/\brdoc\b/d' Gemfile.lock && \
+		sed -i -e '/\brdoc\b/d' -e '/\brake\b/d' -e '/\bjson\b/d' Gemfile.lock && \
 		# Finally package and install the gems \
 		bundle package && bundle install --deployment ; \
 	 fi)
